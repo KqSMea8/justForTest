@@ -11,7 +11,8 @@ utils_objs=${UTILS_DIR}/base64.o \
 		   ${UTILS_DIR}/link_list.o \
 		   ${UTILS_DIR}/urlencode.o \
 		   ${UTILS_DIR}/color.o \
-		   ${UTILS_DIR}/rbtree.o  
+		   ${UTILS_DIR}/rbtree.o  \
+		   ${UTILS_DIR}/xxhash.o 
 
 %.o:%.c
 	$(CC) $(CFLAGS) ${INC_DIR} -c $< -o $@ 
