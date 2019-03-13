@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -D__STDC_LIMIT_MACROS -m64 -Wno-deprecated -Wall -g 
+CFLAGS = -D__STDC_LIMIT_MACROS -m64 -Wno-deprecated -Wall -g -ggdb 
 UTILS_DIR=./../src/utils
 INC_DIR = -I${UTILS_DIR}  
 
@@ -9,7 +9,8 @@ utils_objs=${UTILS_DIR}/base64.o \
 		   ${UTILS_DIR}/hash_map.o \
 		   ${UTILS_DIR}/hash_set.o \
 		   ${UTILS_DIR}/link_list.o \
-		   ${UTILS_DIR}/urlencode.o 
+		   ${UTILS_DIR}/urlencode.o \
+		   ${UTILS_DIR}/color.o  
 
 %.o:%.c
 	$(CC) $(CFLAGS) ${INC_DIR} -c $< -o $@ 

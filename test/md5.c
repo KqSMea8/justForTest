@@ -10,6 +10,7 @@
 #include<unistd.h>
 #include<string.h>
 #include "../src/utils/md5.h"
+#include "../src/utils/color.h"
 
 int main() {
     char *str = "wendao-liuyongshuai";
@@ -19,5 +20,11 @@ int main() {
     bzero(out, 32);
     MD5FileStr("/Users/liuyongshuai/mycode/github/selftest/selftest.cbp", out, 32);
     printf("%s\n", out);
+	printlnGreen(out);
+	printlnRed(out);
+	printlnYellow(out);
+	printlnBlue(out);
+	printlnLightRed(out);
+	printlnPurple(out);
     return 0;
 }
