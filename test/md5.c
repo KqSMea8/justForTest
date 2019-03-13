@@ -11,6 +11,7 @@
 #include<string.h>
 #include "../src/utils/md5.h"
 #include "../src/utils/color.h"
+#include "../src/utils/rune_width.h"
 
 int main() {
     char *str = "wendao-liuyongshuai";
