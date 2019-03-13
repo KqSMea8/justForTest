@@ -26,5 +26,11 @@ int main() {
 	printlnBlue(out);
 	printlnLightRed(out);
 	printlnPurple(out);
+
+	char *lcType=getenv("LC_CTYPE");
+	if(lcType==NULL){
+		lcType=getenv("LANG");
+	}
+	printf("lc_ctype||lang=%s\n",lcType);
     return 0;
 }
