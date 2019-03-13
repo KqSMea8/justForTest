@@ -7,6 +7,13 @@
 #ifndef _UTILS_HASHMAP_H_
 #define _UTILS_HASHMAP_H_
 
+#include "rbtree.h"
+
+struct _hash_map_node {
+    struct rb_node rb_node;    // 红黑树节点
+    unsigned long long hash_key;                // 键值
+    void *data;
+}HashMapNode;
 
 
 #endif
