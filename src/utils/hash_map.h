@@ -7,13 +7,32 @@
 #ifndef _UTILS_HASHMAP_H_
 #define _UTILS_HASHMAP_H_
 
+#include<stdint.h>
 #include "rbtree.h"
 
-struct _hash_map_node {
-    struct rb_node rb_node;    // 红黑树节点
-    unsigned long long hash_key;                // 键值
-    void *data;
+typedef struct _hash_map_entry{
+	void *key;
+	int key_len;
+	void *data;
+}HashMapData;
+
+typedef struct _hash_map_node {
+    struct rb_node rb_node; 
+    uint64_t hash_key; 
+    HashMapData *data;
 }HashMapNode;
+
+typedef struct rb_root HashMapRoot;
+
+int hmap_insert(HashMapRoot *root, const HashMapData *data);
+
+int hmap_len(const HashMapRoot *root);
+
+HashMapNode * hmap_search(HashMapRoot *root, const void *key, int key_len);
+
+int hmap_delete(HashMapRoot *root, const void *key, int key_len);
+
+void hmap_iterate(const HashMapRoot *root,void (*fn)(const HashMapNode* node));
 
 
 #endif
