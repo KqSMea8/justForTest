@@ -9,6 +9,6 @@
 
 #include<stdint.h>
 
-int64_t hash_code(const void *data,int len);
+uint64_t hash_code(const void *data,int len);
 
 #endif
