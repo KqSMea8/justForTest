@@ -10,21 +10,28 @@
 #include<stdint.h>
 #include "rbtree.h"
 
+//kv对
 typedef struct _hash_map_entry{
 	void *key;
-	int key_len;
 	void *data;
-}HashMapData;
+}HashMapEntry;
 
+//node
 typedef struct _hash_map_node {
     struct rb_node rb_node; 
     uint64_t hash_key; 
-    HashMapData *data;
+    HashMapEntry *data;
 }HashMapNode;
 
-typedef struct rb_root HashMapRoot;
 
-int hmap_insert(HashMapRoot *root, const HashMapData *data);
+typedef struct _hash_map_root{
+	struct rb_root rbroot;
+	int len;
+}HashMapRoot;
+
+HashMapRoot *hmap_init();
+
+int hmap_insert(HashMapRoot *root, const void *key,int key_len,const void *data,int data_len);
 
 int hmap_len(const HashMapRoot *root);
 
