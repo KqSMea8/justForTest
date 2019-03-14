@@ -2,6 +2,7 @@
 *.iml
 *.o
 *.DSYM
+*.dSYM
 *.a
 *.so
 _obj
