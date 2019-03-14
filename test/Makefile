@@ -23,7 +23,7 @@ md5.test: md5.o ${utils_objs}
 	$(CC) ${utils_objs} -o md5.test ${CFLAGS}  ${INC_DIR} md5.c 
 
 rbtree.test: rbtree.o ${utils_objs}
-	$(CC) ${utils_objs} -o rbtree_test ${CFLAGS}  ${INC_DIR} rbtree.c 
+	$(CC) ${utils_objs} -o rbtree.test ${CFLAGS}  ${INC_DIR} rbtree.c 
 
 clean:
 	rm -rf ${utils_objs}
