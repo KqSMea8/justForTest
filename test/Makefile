@@ -34,7 +34,7 @@ hmap.test: hmap.o ${utils_objs}
 clean:
 	rm -rf ${utils_objs}
 	rm -rf *.test *.o *.dSYM *.DSYM 
-	rm -rf core.*
+	rm -rf core*
 
 
 
