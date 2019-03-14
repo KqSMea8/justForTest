@@ -18,9 +18,9 @@
 int main() {
     char *str = "wendao-liuyongshuai";
 	unsigned long long hash = XXH64(str,strlen(str),0);
-	printf("%lld\n",hash);
-	int64_t jhash = hash_code(str,strlen(str));
-	printf("%ld\n",jhash);
+	printf("%llu\n",hash);
+	uint64_t jhash = hash_code(str,strlen(str));
+	printf("%llu\n",jhash);
     char out[32] = {0};
     MD5Str(str, strlen(str), out, 32);
     printf("%s\t%s\n", str, out);
