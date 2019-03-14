@@ -18,24 +18,18 @@ void print1(const HashMapNode* node){
 int main(){
 	char *key1 = "this is my first key";
 	char *data1 = "ASDFASFDASDFADFAFDSADFASDFASFD";
-	HashMapData d1;
-	d1.key = key1;
-	d1.key_len = strlen(key1);
-	d1.data = data1;
 
 
 	char *key2 = "this is my second key";
 	char *data2 = "ASDFASFDASDFADFAi-------FDSADFASDFASFD";
-	HashMapData d2;
-	d2.key = key2;
-	d2.key_len = strlen(key2);
-	d2.data = data2;
 
-	HashMapRoot root = RB_ROOT;
-	hmap_insert(&root,&d1);
-	hmap_insert(&root,&d2);
+	HashMapRoot *root = hmap_init();
+	hmap_insert(root,key1,strlen(key1),data1,strlen(data1));
+	hmap_insert(root,key2,strlen(key2),data2,strlen(data2));
 
-	hmap_iterate(&root,print1);
-	hmap_delete(&root,key1,strlen(key1));
-	hmap_iterate(&root,print1);
+	printf("map_len=%d\n",root->len);
+	hmap_iterate(root,print1);
+	hmap_delete(root,key1,strlen(key1));
+	printf("map_len=%d\n",root->len);
+	hmap_iterate(root,print1);
 }
