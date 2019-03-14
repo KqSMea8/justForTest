@@ -27,7 +27,7 @@ rbtree.test: rbtree.o ${utils_objs}
 
 clean:
 	rm -rf ${utils_objs}
-	rm -rf *.test *.o 
+	rm -rf *.test *.o *.dSYM *.DSYM 
 
 
 
