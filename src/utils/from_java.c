@@ -13,13 +13,13 @@
 #include "from_java.h"
 
 //从java搬过来的计算hashCode的方法
-int64_t hash_code(const void *data,int len){
-	int64_t hash;
+int64_t hash_code(const void *data, int len){
+	int64_t h = 0;
 	const char *d = (char*)data;
 	int off = 0;
 	int i;
 	for(i=0;i<len;i++){
-		 hash = 31 * hash + (int)d[off++]; 	
+		 h = 31 * h + (int)d[off++]; 	
 	}
-	return hash;
+	return h;
 }
