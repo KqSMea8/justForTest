@@ -20,7 +20,7 @@ int main() {
 	unsigned long long hash = XXH64(str,strlen(str),0);
 	printf("%lld\n",hash);
 	int64_t jhash = hash_code(str,strlen(str));
-	printf("%lld\n",jhash);
+	printf("%ld\n",jhash);
     char out[32] = {0};
     MD5Str(str, strlen(str), out, 32);
     printf("%s\t%s\n", str, out);
