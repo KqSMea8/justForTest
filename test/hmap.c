@@ -36,4 +36,6 @@ int main(){
 	hmap_insert(&root,&d2);
 
 	hmap_iterate(&root,print1);
+	hmap_delete(&root,key1,strlen(key1));
+	hmap_iterate(&root,print1);
 }
