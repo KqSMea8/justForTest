@@ -8,6 +8,7 @@
 #include<stdlib.h>
 #include<stdint.h>
 #include<unistd.h>
+#include <stdarg.h>
 #include<string.h>
 #include "rune_width.h"
 
@@ -49,7 +50,7 @@ void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *r
 }
 
 //判断所给字符是否在指定表里
-int isRuneInTable(int32_t rune, runeInterval *table, int32_t tableLen) {
+int isRuneInTable(int32_t rune, runeInterval *table, size_t tableLen) {
     if (rune < (*table).first) {
         return -1;
     }
@@ -72,6 +73,24 @@ int isRuneInTable(int32_t rune, runeInterval *table, int32_t tableLen) {
     return -1;
 }
 
+//判断一堆表。。runeInterval *, size_t 要成对出现
+int isRuneInTables(int32_t rune, ...) {
+    va_list ap;
+    int j,count;
+    va_start(ap, count);
+    for (j = 0; j < count; j++) {
+        if (j % 2 == 0) {
+            runeInterval *t = va_arg(ap, runeInterval * );
+            int n = va_arg(ap, size_t);
+            int in = isRuneInTable(rune, t, n);
+            if (in == 0) {
+                return 0;
+            }
+        }
+    }
+    va_end(ap);
+    return -1;
+}
 
 runeInterval privateTable[] = {
         {0x00E000, 0x00F8FF},
