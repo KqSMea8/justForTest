@@ -8,7 +8,7 @@
 #include<stdlib.h>
 #include<stdint.h>
 #include<unistd.h>
-#include <stdarg.h>
+#include<stdarg.h>
 #include<string.h>
 #include "rune_width.h"
 
@@ -49,6 +49,11 @@ void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *r
     return;
 }
 
+//是否为东亚语系
+int isEastAsianLocale() {
+
+}
+
 //判断所给字符是否在指定表里
 int isRuneInTable(int32_t rune, runeInterval *table, size_t tableLen) {
     if (rune < (*table).first) {
@@ -76,7 +81,7 @@ int isRuneInTable(int32_t rune, runeInterval *table, size_t tableLen) {
 //判断一堆表。。runeInterval *, size_t 要成对出现
 int isRuneInTables(int32_t rune, ...) {
     va_list ap;
-    int j,count;
+    int j, count;
     va_start(ap, count);
     for (j = 0; j < count; j++) {
         if (j % 2 == 0) {

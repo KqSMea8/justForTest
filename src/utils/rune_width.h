@@ -16,6 +16,7 @@
 #define CHAR4_UTF8_MAX -9
 
 #include<stdint.h>
+#include<stdarg.h>
 
 typedef struct _runeInterval {
     int32_t first;
@@ -25,5 +26,8 @@ typedef struct _runeInterval {
 
 //转换成runes
 void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *rune_len, int32_t run_limit);
+int isRuneInTable(int32_t rune, runeInterval *table, size_t tableLen);
+int isRuneInTables(int32_t rune, ...);
+int isEastAsianLocale();
 
 #endif
