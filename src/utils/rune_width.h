@@ -19,7 +19,7 @@ runeInterval privateTable[] = {
         {0x00E000, 0x00F8FF},
         {0x0F0000, 0x0FFFFD},
         {0x100000, 0x10FFFD},
-}
+};
 
 runeInterval nonPrintTable[] = {
         {0x0000, 0x001F},
@@ -34,7 +34,7 @@ runeInterval nonPrintTable[] = {
         {0xFEFF, 0xFEFF},
         {0xFFF9, 0xFFFB},
         {0xFFFE, 0xFFFF},
-}
+};
 
 runeInterval combiningTable[] = {
         {0x0300,  0x036F},
@@ -287,7 +287,7 @@ runeInterval combiningTable[] = {
         {0x1E8D0, 0x1E8D6},
         {0x1E944, 0x1E94A},
         {0xE0100, 0xE01EF},
-}
+};
 
 runeInterval doubleWidthTable[] = {
         {0x1100,  0x115F},
@@ -396,7 +396,7 @@ runeInterval doubleWidthTable[] = {
         {0x1F9C0, 0x1F9C0},
         {0x20000, 0x2FFFD},
         {0x30000, 0x3FFFD},
-}
+};
 
 runeInterval ambiguousTable[] = {
         {0x00A1,   0x00A1},
@@ -578,7 +578,7 @@ runeInterval ambiguousTable[] = {
         {0xE0100,  0xE01EF},
         {0xF0000,  0xFFFFD},
         {0x100000, 0x10FFFD},
-}
+};
 
 runeInterval emojiTable[] = {
         {0x203C,  0x203C},
@@ -723,7 +723,7 @@ runeInterval emojiTable[] = {
         {0x1F9B0, 0x1F9B9},
         {0x1F9C0, 0x1F9C2},
         {0x1F9D0, 0x1F9FF},
-}
+};
 
 runeInterval notAssignedTable[] = {
         {0x0378,  0x0379},
@@ -1363,7 +1363,7 @@ runeInterval notAssignedTable[] = {
         {0xE0080, 0xE00FF},
         {0xE01F0, 0xEFFFF},
         {0xFFFFE, 0xFFFFF},
-}
+};
 
 runeInterval neutralTable[] = {
         {0x0000,  0x001F},
@@ -2153,5 +2153,5 @@ runeInterval neutralTable[] = {
         {0x1F890, 0x1F8AD},
         {0xE0001, 0xE0001},
         {0xE0020, 0xE007F},
-}
+};
 #endif
