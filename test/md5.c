@@ -46,16 +46,10 @@ int main() {
     //正则匹配
     char *bematch = "hhhericchd@gmail.com";
     char *pattern = "h{3,10}(.*)@.{5}.(.*)";
-    char *regbug[10];
-    for (i = 0; i < 10; i++) {
-        regbug[i] = (char *) malloc(sizeof(char) * 64);
-        bzero(regbug[i], sizeof(char) * 64);
-    }
     size_t outlen = 0;
-    int regNo = find_string_sub_match(pattern, bematch, regbug, 10, &outlen);
-    printf("regNo=%d,outlen=%d\n", regNo, outlen);
+    char **regbuf = find_string_sub_match(pattern, bematch, 10, &outlen);
     for (i = 0; i < outlen; i++) {
-        printf("%s\n", regbug[i]);
+        printf("%s\n", regbuf[i]);
     }
     return 0;
 }
