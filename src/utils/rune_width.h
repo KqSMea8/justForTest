@@ -8,10 +8,12 @@
 #define _UTILS_RUNE_WIDTH_H_
 
 #define TABLE_LEN(a) ( (sizeof(a)) / (sizeof(a[0])) )
-#define CHAR1 127
-#define CHAR2 -33
-#define CHAR3 -17
-#define CHAR4 -9
+
+//utf8编码第一个字节的最大值
+#define CHAR1_UTF8_MAX 127
+#define CHAR2_UTF8_MAX -33
+#define CHAR3_UTF8_MAX -17
+#define CHAR4_UTF8_MAX -9
 
 #include<stdint.h>
 

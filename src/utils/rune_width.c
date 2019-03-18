@@ -19,19 +19,19 @@ void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *r
     do {
         buf = 0;
         char c = *tmp;
-        if (c <= CHAR1 && c >= 0) {//单字节编码形式
+        if (c <= CHAR1_UTF8_MAX && c >= 0) {//单字节编码形式
             memcpy(&buf, tmp, 1);
             tmp++;
         }
-        else if (c <= CHAR2) {//-33双字节编码形式
+        else if (c <= CHAR2_UTF8_MAX) {//-33双字节编码形式
             memcpy(&buf, tmp, 2);
             tmp += 2;
         }
-        else if (c <= CHAR3) {//-17三字节编码形式
+        else if (c <= CHAR3_UTF8_MAX) {//-17三字节编码形式
             memcpy(&buf, tmp, 3);
             tmp += 3;
         }
-        else if (c <= CHAR4) {//-9四字节编码形式
+        else if (c <= CHAR4_UTF8_MAX) {//-9四字节编码形式
             memcpy(&buf, tmp, 4);
             tmp += 4;
         }
