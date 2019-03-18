@@ -11,6 +11,7 @@
 #include<stdarg.h>
 #include<string.h>
 #include "rune_width.h"
+#include "str.h"
 
 //计算字符长度
 void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *rune_len, int32_t run_limit) {
@@ -51,7 +52,23 @@ void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *r
 
 //是否为东亚语系
 int isEastAsianLocale() {
-
+    char *lcType = getenv("LC_CTYPE");
+    if (lcType == NULL) {
+        lcType = getenv("LANG");
+    }
+    if (lcType == NULL) {
+        return -1;
+    }
+    // ignore C locale
+    if (strcmp(lcType, "POSIX") == 0 || strcmp(lcType, "C") == 0) {
+        return -1;
+    }
+    if (strlen(lcType) > 1 && *lcType == 'C' && (*(lcType + 1) == '.' || *(lcType + 1) == '-')) {
+        return -1;
+    }
+    char *locale = (char *) malloc(strlen(lcType));
+    strcpy(locale, lcType);
+    str_tolower(locale, strlen(locale));
 }
 
 //判断所给字符是否在指定表里
