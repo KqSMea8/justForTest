@@ -14,7 +14,8 @@ utils_objs=${UTILS_DIR}/base64.o \
 		   ${UTILS_DIR}/rbtree.o  \
 		   ${UTILS_DIR}/xxhash.o \
 		   ${UTILS_DIR}/from_java.o \
-		   ${UTILS_DIR}/rune_width.o
+		   ${UTILS_DIR}/rune_width.o \
+		   ${UTILS_DIR}/str.o
 
 %.o:%.c
 	$(CC) $(CFLAGS) ${INC_DIR} -c $< -o $@ 
@@ -22,7 +23,8 @@ utils_objs=${UTILS_DIR}/base64.o \
 all: md5.test \
 	rbtree.test \
 	hmap.test \
-	rune.test
+	rune.test \
+	regexp.test
 
 md5.test: md5.o ${utils_objs}
 	$(CC) ${utils_objs} -o md5.test ${CFLAGS}  ${INC_DIR} md5.c 
@@ -35,6 +37,9 @@ hmap.test: hmap.o ${utils_objs}
 
 rune.test: rune.o ${utils_objs}
 	$(CC) ${utils_objs} -o rune.test ${CFLAGS}  ${INC_DIR} rune.c
+
+regexp.test: regexp.o ${utils_objs}
+	$(CC) ${utils_objs} -o regexp.test ${CFLAGS}  ${INC_DIR} regexp.c
 
 clean:
 	rm -rf ${utils_objs}
