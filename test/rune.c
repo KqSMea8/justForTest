@@ -20,4 +20,8 @@ void main() {
         printf("%s\t", (char *) &buf[i]);
     }
     printf("\n");
+    extern runeInterval combiningTable[];
+    extern size_t combiningTableLen;
+    int a = isRuneInTable(0x0A3F, combiningTable, combiningTableLen);
+    printf("a=%d\n", a);
 }
