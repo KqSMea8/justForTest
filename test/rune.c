@@ -16,14 +16,8 @@ void main() {
     int32_t runeNum;
     convRunes(str, strlen(str), buf, &runeNum, 100);
     int i = 0;
-    printf("\n");
-    for (; i < 100; i++) {
-        printf("%d\t", buf[i]);
+    for (; i < runeNum; i++) {
+        printf("%s\t", (char *) &buf[i]);
     }
     printf("\n");
-    char *str1 = "语";
-    printf("-------%lu-----\n", strlen(str1));
-    for(i=0;i<strlen(str1);i++){
-        printf("%d\n",*(str1+i));
-    }
 }
