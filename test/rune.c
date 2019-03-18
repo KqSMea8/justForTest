@@ -22,6 +22,15 @@ void main() {
     printf("\n");
     extern runeInterval combiningTable[];
     extern size_t combiningTableLen;
+    extern runeInterval privateTable[];
+    extern size_t privateTableLen;
+    extern runeInterval nonPrintTable[];
+    extern size_t nonPrintTableLen;
     int a = isRuneInTable(0x0A3F, combiningTable, combiningTableLen);
     printf("a=%d\n", a);
+    int b = isRuneInTables(0,
+                           combiningTable, combiningTableLen,
+                           privateTable, privateTableLen,
+                           nonPrintTable, nonPrintTableLen);
+    printf("b=%d\n", b);
 }
