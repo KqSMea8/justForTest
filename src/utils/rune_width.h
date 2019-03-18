@@ -22,14 +22,6 @@ typedef struct _runeInterval {
     int32_t last;
 } runeInterval;
 
-runeInterval privateTable[];
-runeInterval nonPrintTable[];
-runeInterval combiningTable[];
-runeInterval doubleWidthTable[];
-runeInterval ambiguousTable[];
-runeInterval emojiTable[];
-runeInterval notAssignedTable[];
-runeInterval neutralTable[];
 
 //转换成runes
 void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *rune_len, int32_t run_limit);

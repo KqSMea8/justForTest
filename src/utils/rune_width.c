@@ -48,11 +48,37 @@ void convRunes(const char *utf8_str, int32_t str_len, int32_t *runes, int32_t *r
     return;
 }
 
+//判断所给字符是否在指定表里
+int isRuneInTable(int32_t rune, runeInterval *table, int32_t tableLen) {
+    if (rune < (*table).first) {
+        return -1;
+    }
+
+    int bot = 0;
+    int top = tableLen;
+    int mid;
+    while (top >= bot) {
+        mid = (bot + top) >> 1;
+        if ((table + mid)->last < rune) {
+            bot = mid + 1;
+        }
+        else if ((table + mid)->first > rune) {
+            top = mid - 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    return -1;
+}
+
+
 runeInterval privateTable[] = {
         {0x00E000, 0x00F8FF},
         {0x0F0000, 0x0FFFFD},
         {0x100000, 0x10FFFD},
 };
+size_t privateTableLen = TABLE_LEN(privateTable);
 
 
 runeInterval nonPrintTable[] = {
@@ -69,6 +95,7 @@ runeInterval nonPrintTable[] = {
         {0xFFF9, 0xFFFB},
         {0xFFFE, 0xFFFF},
 };
+size_t nonPrintTableLen = TABLE_LEN(nonPrintTable);
 
 runeInterval combiningTable[] = {
         {0x0300,  0x036F},
@@ -322,6 +349,7 @@ runeInterval combiningTable[] = {
         {0x1E944, 0x1E94A},
         {0xE0100, 0xE01EF},
 };
+size_t combiningTableLen = TABLE_LEN(combiningTable);
 
 runeInterval doubleWidthTable[] = {
         {0x1100,  0x115F},
@@ -431,6 +459,7 @@ runeInterval doubleWidthTable[] = {
         {0x20000, 0x2FFFD},
         {0x30000, 0x3FFFD},
 };
+size_t doubleWidthTableLen = TABLE_LEN(doubleWidthTable);
 
 runeInterval ambiguousTable[] = {
         {0x00A1,   0x00A1},
@@ -613,6 +642,7 @@ runeInterval ambiguousTable[] = {
         {0xF0000,  0xFFFFD},
         {0x100000, 0x10FFFD},
 };
+size_t ambiguousTableLen = TABLE_LEN(ambiguousTable);
 
 runeInterval emojiTable[] = {
         {0x203C,  0x203C},
@@ -758,6 +788,7 @@ runeInterval emojiTable[] = {
         {0x1F9C0, 0x1F9C2},
         {0x1F9D0, 0x1F9FF},
 };
+size_t emojiTableLen = TABLE_LEN(emojiTable);
 
 runeInterval notAssignedTable[] = {
         {0x0378,  0x0379},
@@ -1398,6 +1429,7 @@ runeInterval notAssignedTable[] = {
         {0xE01F0, 0xEFFFF},
         {0xFFFFE, 0xFFFFF},
 };
+size_t notAssignedTableLen = TABLE_LEN(notAssignedTable);
 
 runeInterval neutralTable[] = {
         {0x0000,  0x001F},
@@ -2188,3 +2220,4 @@ runeInterval neutralTable[] = {
         {0xE0001, 0xE0001},
         {0xE0020, 0xE007F},
 };
+size_t neutralTableLen = TABLE_LEN(neutralTable);
