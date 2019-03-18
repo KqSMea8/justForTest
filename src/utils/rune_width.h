@@ -7,6 +7,8 @@
 #ifndef _UTILS_RUNE_WIDTH_H_
 #define _UTILS_RUNE_WIDTH_H_
 
+#define TABLE_LEN(a) ( (sizeof(a)) / (sizeof(a[0])) )
+
 #include<stdint.h>
 
 typedef struct _runeInterval {
@@ -20,6 +22,7 @@ runeInterval privateTable[] = {
         {0x0F0000, 0x0FFFFD},
         {0x100000, 0x10FFFD},
 };
+
 
 runeInterval nonPrintTable[] = {
         {0x0000, 0x001F},
