@@ -61,15 +61,16 @@ int find_string_sub_match(const char *pattern, const char *str, char **output, s
         return -1;
     }
 
-    int i;
-    *outlen = 0;
+    int i, j = 0;
     for (i = 0; i < subsize && pmatch[i].rm_so != -1; i++) {
         int len = pmatch[i].rm_eo - pmatch[i].rm_so;
+        printf("len%d=%d\n", i, len);
         if (len <= 0) {
             continue;
         }
-        memcpy(*output + *outlen, str + pmatch[i].rm_so, len);
-        (*outlen)++;
+        strncpy(*output + 64*i, str + pmatch[i].rm_so, len);
+        j++;
     }
+    *outlen = j;
     return 0;
 }
