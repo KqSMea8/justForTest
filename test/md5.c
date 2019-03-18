@@ -14,30 +14,44 @@
 #include "../src/utils/rune_width.h"
 #include "../src/utils/xxhash.h"
 #include "../src/utils/from_java.h"
+#include "../src/utils/str.h"
 
 int main() {
+    int i, j;
     char *str = "wendao-liuyongshuai";
-	unsigned long long hash = XXH64(str,strlen(str),0);
-	printf("%llu\n",hash);
-	uint64_t jhash = hash_code(str,strlen(str));
-	printf("%llu\n",jhash);
+    unsigned long long hash = XXH64(str, strlen(str), 0);
+    printf("%llu\n", hash);
+    uint64_t jhash = hash_code(str, strlen(str));
+    printf("%llu\n", jhash);
     char out[32] = {0};
     MD5Str(str, strlen(str), out, 32);
     printf("%s\t%s\n", str, out);
     bzero(out, 32);
     MD5FileStr("/Users/liuyongshuai/mycode/github/selftest/selftest.cbp", out, 32);
     printf("%s\n", out);
-	printlnGreen(out);
-	printlnRed(out);
-	printlnYellow(out);
-	printlnBlue(out);
-	printlnLightRed(out);
-	printlnPurple(out);
+    printlnGreen(out);
+    printlnRed(out);
+    printlnYellow(out);
+    printlnBlue(out);
+    printlnLightRed(out);
+    printlnPurple(out);
 
-	char *lcType=getenv("LC_CTYPE");
-	if(lcType==NULL){
-		lcType=getenv("LANG");
-	}
-	printf("lc_ctype||lang=%s\n",lcType);
+    char *lcType = getenv("LC_CTYPE");
+    if (lcType == NULL) {
+        lcType = getenv("LANG");
+    }
+    printf("lc_ctype||lang=%s\n", lcType);
+
+
+    //正则匹配
+    char *bematch = "hhhericchd@gmail.com";
+    char *pattern = "h{3,10}(.*)@.{5}.(.*)";
+    char regbug[10][64] = {0};
+    size_t outlen = 0;
+    int regNo = find_string_sub_match(pattern, bematch, regbug, 10, &outlen);
+    printf("regNo=%d\n", regNo);
+    for (i = 0; i < outlen; i++) {
+        printf("%s\n", regbug[i]);
+    }
     return 0;
 }
