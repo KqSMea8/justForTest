@@ -39,7 +39,7 @@ int has_suffix(const char *str, size_t str_len, const char *suffix, size_t suffi
 }
 
 //正则匹配查找子串
-int find_string_sub_match(const char *pattern, const char *str, char **output, size_t subsize, size_t *outlen) {
+char ** find_string_sub_match(const char *pattern, const char *str, size_t subsize, size_t *outlen) {
     regex_t reg;
     int errno;
     char errbuf[1024];
@@ -61,16 +61,15 @@ int find_string_sub_match(const char *pattern, const char *str, char **output, s
         return -1;
     }
 
-    int i, j = 0;
+    int i;
+	char **output = (char**)malloc(sizeof(char*)*subsize);
     for (i = 0; i < subsize && pmatch[i].rm_so != -1; i++) {
         int len = pmatch[i].rm_eo - pmatch[i].rm_so;
-        printf("len%d=%d\n", i, len);
-        if (len <= 0) {
-            continue;
-        }
-        strncpy(*output + 64*i, str + pmatch[i].rm_so, len);
-        j++;
+		char *match = (char*)malloc(sizeof(char)*len+1);
+		bzero(match,sizeof(char)*len+1);
+        strncpy(match, str + pmatch[i].rm_so, len);
+		output[i]=match;
     }
-    *outlen = j;
-    return 0;
+    *outlen = i;
+    return output;
 }
