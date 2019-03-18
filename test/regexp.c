@@ -36,8 +36,8 @@ int main() {
         printf("err:%s\n", errbuf);
         exit(-1);
     }
-
-    for (int i = 0; i < 10 && pmatch[i].rm_so != -1; i++) {
+	int i;
+    for (i = 0; i < 10 && pmatch[i].rm_so != -1; i++) {
         int len = pmatch[i].rm_eo - pmatch[i].rm_so;
         if (len) {
             memset(match, '\0', sizeof(match));
