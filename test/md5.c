@@ -51,9 +51,17 @@ int main() {
     for (i = 0; i < outlen; i++) {
         printf("%s\n", regbuf[i]);
     }
+    /*
     char *regStr = "http://scmpf.intra.xiaojukeji.com/index.php/home/index/all/104859";
     char *regpattern = "http:\\/\\/scmpf\\.intra\\.(.+?)\\.com(.*)";
-    char **regbuf1 = find_string_sub_match(regpattern, regStr, 10, &outlen);
+    char **regbuf0 = find_string_sub_match(regpattern, regStr, 10, &outlen);
+    for (i = 0; i < outlen; i++) {
+        printf("%s\n", regbuf0[i]);
+    }
+     */
+    char *regpattern1 = "^[a-z][a-z][a-z]?(?:_[A-Z][A-Z])?\\.(.+)";
+    char *regStr1 = "abc_WD.abc";
+    char **regbuf1 = find_string_sub_match(regpattern1, regStr1, 10, &outlen);
     for (i = 0; i < outlen; i++) {
         printf("%s\n", regbuf1[i]);
     }
