@@ -51,5 +51,11 @@ int main() {
     for (i = 0; i < outlen; i++) {
         printf("%s\n", regbuf[i]);
     }
+    char *regStr = "http://scmpf.intra.xiaojukeji.com/index.php/home/index/all/104859";
+    char *regpattern = "http:\\/\\/scmpf\\.intra\\.(.+)\\..*";
+    char **regbuf1 = find_string_sub_match(regpattern, regStr, 10, &outlen);
+    for (i = 0; i < outlen; i++) {
+        printf("%s\n", regbuf1[i]);
+    }
     return 0;
 }
