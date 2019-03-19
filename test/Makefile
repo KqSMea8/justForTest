@@ -1,7 +1,7 @@
-CC = gcc
+CC = /usr/bin/gcc
 CFLAGS = -D__STDC_LIMIT_MACROS -m64 -Wno-deprecated -Wall -g -ggdb 
 UTILS_DIR=./../src/utils
-INC_DIR = -I${UTILS_DIR}  
+INC_DIR = -I${UTILS_DIR} -lpcre
 
 utils_objs=${UTILS_DIR}/base64.o \
 		   ${UTILS_DIR}/file.o \
