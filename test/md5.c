@@ -59,7 +59,7 @@ int main() {
         printf("%s\n", regbuf0[i]);
     }
      */
-    char *regpattern1 = "^[a-z][a-z][a-z]?(?:_[A-Z][A-Z])?\\.(.+)";
+    char *regpattern1 = "^[a-z]{2,3}?(?:_[A-Z]{2})?\\.(.*)";
     char *regStr1 = "abc_WD.abc";
     char **regbuf1 = find_string_sub_match(regpattern1, regStr1, 10, &outlen);
     for (i = 0; i < outlen; i++) {

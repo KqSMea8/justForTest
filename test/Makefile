@@ -1,4 +1,4 @@
-CC = /usr/bin/gcc
+CC = gcc
 CFLAGS = -D__STDC_LIMIT_MACROS -m64 -Wno-deprecated -Wall -g -ggdb 
 UTILS_DIR=./../src/utils
 INC_DIR = -I${UTILS_DIR} -lpcre
